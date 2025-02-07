@@ -9,6 +9,6 @@ class SquareToCircle(Scene):
         square.rotate(PI / 4)
         square.set_fill(RED, opacity=0.5)
 
-        self.play(Create(circle))
-        self.play(Transform(circle, square))
-        self.play(FadeOut(square))
+        self.play(Create(square))
+        self.play(Transform(square, circle))
+        self.play(FadeOut(circle))
