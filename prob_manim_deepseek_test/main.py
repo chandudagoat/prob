@@ -1,12 +1,8 @@
 from manim import *
-from dotenv import dotenv_values
+from config import deepseek_client
 
-config = dotenv_values(".env")
-deepseek_key = config["DEEPSEEK_API_KEY"]
+response = deepseek_client.chat.completions.create(
+    model="deepseek-chat", messages=[{"role": "user", "content": "Hello"}], stream=False
+)
 
-
-class CreateCircle(Scene):
-    def construct(self):
-        circle = Circle()
-        circle.set_fill(PINK, opacity=0.5)
-        self.play(Create(circle))
+print(response.choices[0].message.content)
